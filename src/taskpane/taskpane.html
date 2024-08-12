@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Urlaubsantrag</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="taskpane.css">
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script src="https://alcdn.msauth.net/browser/2.13.1/js/msal-browser.min.js"></script>
+    <script defer src="taskpane.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Urlaubsantrag</h1>
+        <form id="holidayForm">
+            <div class="form-group">
+                <label for="startDate">Startdatum:</label>
+                <input type="date" id="startDate" required>
+            </div>
+            <div class="form-group">
+                <label for="endDate">Enddatum:</label>
+                <input type="date" id="endDate" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">Grund:</label>
+                <select id="reason" required>
+                    <option value="Urlaub">Urlaub</option>
+                    <option value="unbezahlter Urlaub">unbezahlter Urlaub</option>
+                    <option value="Mutterschaft">Mutterschaft</option>
+                    <option value="Vaterschaft">Vaterschaft</option>
+                    <option value="Militär">Militär</option>
+                    <option value="Bezahlter Urlaub gem. MA-Reglement">Bezahlter Urlaub gem. MA-Reglement</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="deputy">Stellvertreter:</label>
+                <input type="text" id="deputy" placeholder="Email1, Email2, ...">
+            </div>
+            <hr class="divider">
+            <div id="initialProject">
+                <div class="form-group">
+                    <label for="projectNumber1">Projektnummer:</label>
+                    <input type="text" id="projectNumber1" required>
+                </div>
+                <div class="form-group">
+                    <label for="projectManager1">Projektleiter:</label>
+                    <input type="text" id="projectManager1" placeholder="Email1, Email2, ...">
+                </div>
+                <div class="form-group">
+                    <label for="projectDeputy1">Stellvertreter des Projektes:</label>
+                    <input type="text" id="projectDeputy1" placeholder="Email1, Email2, ...">
+                </div>
+            </div>
+            <div id="additionalProjects"></div>
+            <div class="button-group">
+                <button type="button" id="addProjectButton" class="btn-secondary">Projekt hinzufügen</button>
+                <button type="button" id="removeProjectButton" class="btn-secondary">Projekt entfernen</button>
+            </div>
+            <button type="submit" class="btn-primary">Senden</button>
+        </form>
+        <div id="confirmationMessage" class="confirmation-message"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,141 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.17/MicrosoftTeams.schema.json",
+  "id": "a82d4945-c9e3-441a-b187-866b80e5db35",
+  "manifestVersion": "1.17",
+  "version": "1.0.2",
+  "name": {
+    "short": "IEFerien",
+    "full": "IE Task Pane Add-in"
+  },
+  "description": {
+    "short": "A template to get started.",
+    "full": "This is the template to get started."
+  },
+  "developer": {
+    "name": "IE",
+    "websiteUrl": "https://www.ie.com",
+    "privacyUrl": "https://www.ie.com/privacy",
+    "termsOfUseUrl": "https://www.ie.com/servicesagreement"
+  },
+  "icons": {
+    "outline": "assets/outline.png",
+    "color": "assets/color.png"
+  },
+  "accentColor": "#230201",
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us",
+    "additionalLanguages": []
+  },
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "MailboxItem.ReadWrite",
+          "type": "Delegated"
+        }
+      ]
+    }
+  },
+  "validDomains": [
+    "ie.com"
+  ],
+  "extensions": [
+    {
+      "requirements": {
+        "scopes": [
+          "mail"
+        ],
+        "capabilities": [
+          {
+            "name": "Mailbox",
+            "minVersion": "1.3"
+          }
+        ]
+      },
+      "runtimes": [
+        {
+          "requirements": {
+            "capabilities": [
+              {
+                "name": "Mailbox",
+                "minVersion": "1.3"
+              }
+            ]
+          },
+          "id": "TaskPaneRuntime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/taskpane.html"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "TaskPaneRuntimeShow",
+              "type": "openPage",
+              "pinnable": false,
+              "view": "dashboard"
+            }
+          ]
+        }
+      ],
+      "ribbons": [
+        {
+          "contexts": [
+            "mailRead"
+          ],
+          "tabs": [
+            {
+              "builtInTabId": "TabDefault",
+              "groups": [
+                {
+                  "id": "msgReadGroup",
+                  "label": "IE Add-in",
+                  "icons": [
+                    {
+                      "size": 16,
+                      "url": "https://localhost:3000/assets/icon-16.png"
+                    },
+                    {
+                      "size": 32,
+                      "url": "https://localhost:3000/assets/icon-32.png"
+                    },
+                    {
+                      "size": 80,
+                      "url": "https://localhost:3000/assets/icon-80.png"
+                    }
+                  ],
+                  "controls": [
+                    {
+                      "id": "msgReadOpenPaneButton",
+                      "type": "button",
+                      "label": "FerIEN",
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://localhost:3000/assets/icon-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://localhost:3000/assets/icon-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "FerIEN",
+                        "description": "Opens a pane displaying all available properties."
+                      },
+                      "actionId": "TaskPaneRuntimeShow"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

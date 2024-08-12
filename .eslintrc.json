@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "globals": {
+    "Office": "readonly",
+    "document": "readonly",
+    "console": "readonly",
+    "alert": "readonly"
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 2015,
+    "sourceType": "module"
+  },
+  "rules": {
+    "prettier/prettier": ["error", { "singleQuote": true }],
+    "no-undef": "error"
+  },
+  "plugins": ["prettier"]
+}
