@@ -13,13 +13,13 @@
   },
   "developer": {
     "name": "IE",
-    "websiteUrl": "https://www.ie.com",
-    "privacyUrl": "https://www.ie.com/privacy",
-    "termsOfUseUrl": "https://www.ie.com/servicesagreement"
+    "websiteUrl": "https://amo28m.github.io/outlookFerIEn/",
+    "privacyUrl": "https://amo28m.github.io/outlookFerIEn/privacy",
+    "termsOfUseUrl": "https://amo28m.github.io/outlookFerIEn/servicesagreement"
   },
   "icons": {
-    "outline": "assets/outline.png",
-    "color": "assets/color.png"
+    "outline": "https://amo28m.github.io/outlookFerIEn/assets/outline.png",
+    "color": "https://amo28m.github.io/outlookFerIEn/assets/color.png"
   },
   "accentColor": "#230201",
   "localizationInfo": {
@@ -37,7 +37,7 @@
     }
   },
   "validDomains": [
-    "ie.com"
+    "amo28m.github.io"
   ],
   "extensions": [
     {
@@ -65,7 +65,7 @@
           "id": "TaskPaneRuntime",
           "type": "general",
           "code": {
-            "page": "https://localhost:3000/taskpane.html"
+            "page": "https://amo28m.github.io/outlookFerIEn/taskpane.html"
           },
           "lifetime": "short",
           "actions": [
@@ -93,15 +93,15 @@
                   "icons": [
                     {
                       "size": 16,
-                      "url": "https://localhost:3000/assets/icon-16.png"
+                      "url": "https://amo28m.github.io/outlookFerIEn/assets/icon-16.png"
                     },
                     {
                       "size": 32,
-                      "url": "https://localhost:3000/assets/icon-32.png"
+                      "url": "https://amo28m.github.io/outlookFerIEn/assets/icon-32.png"
                     },
                     {
                       "size": 80,
-                      "url": "https://localhost:3000/assets/icon-80.png"
+                      "url": "https://amo28m.github.io/outlookFerIEn/assets/icon-80.png"
                     }
                   ],
                   "controls": [
@@ -112,15 +112,15 @@
                       "icons": [
                         {
                           "size": 16,
-                          "url": "https://localhost:3000/assets/icon-16.png"
+                          "url": "https://amo28m.github.io/outlookFerIEn/assets/icon-16.png"
                         },
                         {
                           "size": 32,
-                          "url": "https://localhost:3000/assets/icon-32.png"
+                          "url": "https://amo28m.github.io/outlookFerIEn/assets/icon-32.png"
                         },
                         {
                           "size": 80,
-                          "url": "https://localhost:3000/assets/icon-80.png"
+                          "url": "https://amo28m.github.io/outlookFerIEn/assets/icon-80.png"
                         }
                       ],
                       "supertip": {
