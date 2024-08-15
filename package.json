@@ -27,10 +27,10 @@
   },
   "dependencies": {
     "core-js": "^3.36.0",
+    "office-addin-validator": "^1.0.5",
     "regenerator-runtime": "^0.14.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.12.11",
     "@types/office-js": "^1.0.377",
     "@types/office-runtime": "^1.0.35",

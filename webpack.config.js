@@ -5,27 +5,31 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const urlDev = "https://localhost:3000/";
-const urlProd = "https://www.contoso.com/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
+const urlProd = "https://amo28m.github.io/outlookFerIEn/";
 
-async function getHttpsOptions() {
-  const httpsOptions = await devCerts.getHttpsServerOptions();
+function getHttpsOptionsSync() {
+  const httpsOptions = devCerts.getHttpsServerOptionsSync();
   return { ca: httpsOptions.ca, key: httpsOptions.key, cert: httpsOptions.cert };
 }
 
-module.exports = async (env, options) => {
+module.exports = (env, options) => {
   const dev = options.mode === "development";
+  const httpsOptions = env.WEBPACK_BUILD || options.https !== undefined ? options.https : getHttpsOptionsSync();
+
   const config = {
     devtool: "source-map",
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
-      commands: "./src/commands/commands.js",
+      taskpane: "./src/taskpane/taskpane.js", // Haupt-JavaScript-Datei für die Taskpane
+      commands: "./src/commands/commands.js", // Haupt-JavaScript-Datei für Commands
     },
     output: {
-      clean: true,
+      filename: "[name].bundle.js", // Namenskonvention für die generierten Bundle-Dateien
+      path: __dirname + "/dist", // Ausgabeordner für die gebauten Dateien
+      clean: true, // Löscht die Ausgabe-Ordner vor dem neuen Build
     },
     resolve: {
-      extensions: [".html", ".js"],
+      extensions: [".html", ".js"], // Ermöglicht es, diese Erweiterungen ohne Angabe zu importieren
     },
     module: {
       rules: [
@@ -67,7 +71,7 @@ module.exports = async (env, options) => {
           },
           {
             from: "manifest*.json",
-            to: "[name]" + "[ext]",
+            to: "[name][ext]",
             transform(content) {
               if (dev) {
                 return content;
@@ -90,7 +94,7 @@ module.exports = async (env, options) => {
       },
       server: {
         type: "https",
-        options: env.WEBPACK_BUILD || options.https !== undefined ? options.https : await getHttpsOptions(),
+        options: httpsOptions,
       },
       port: process.env.npm_package_config_dev_server_port || 3000,
     },
