@@ -39,7 +39,7 @@ function addProjectFields() {
   projectGroup.innerHTML = `
     <hr class="divider">
     <div class="form-group">
-      <label for="projectNumber${projectCount}">Projektnummer:</label>
+      <label for="projectNumber${projectCount}">Projektnummer/Funktion:</label>
       <input type="text" id="projectNumber${projectCount}" required>
     </div>
     <div class="form-group">

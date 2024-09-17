@@ -19,12 +19,25 @@
  
  .container {
      width: 100%;
-     max-width: 400px;
+     max-width: 100%;
      margin: 20px;
      padding: 20px;
      background-color: #fff;
      border-radius: 8px;
      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ }
+ 
+ /* Größere Bildschirme */
+ @media screen and (min-width: 600px) {
+     .container {
+         max-width: 600px;
+     }
+ }
+ 
+ @media screen and (min-width: 1024px) {
+     .container {
+         max-width: 800px;
+     }
  }
  
  h1 {
@@ -93,31 +106,31 @@
  .btn-primary:hover {
      background-color: #005a9e;
  }
- 
+
  .btn-secondary {
-     width: 100%;
-     padding: 10px;
-     background-color: #fff;
-     border: 2px solid #0078d7;
-     border-radius: 4px;
-     color: #0078d7;
-     font-size: 16px;
-     font-weight: 500;
-     cursor: pointer;
-     transition: background-color 0.3s ease;
-     margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border: 2px solid #0078d7;
+    border-radius: 4px;
+    color: #0078d7;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
  }
- 
- .btn-secondary:hover {
-     background-color: #f0f8ff;
- }
- 
- .button-group {
-     display: flex;
-     flex-direction: column;
-     gap: 10px;
- }
- 
+
+.btn-secondary:hover {
+    background-color: #f0f8ff;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
  .confirmation-message {
      margin-top: 20px;
      padding: 10px;
@@ -128,14 +141,14 @@
      display: none;
      text-align: center;
  }
- 
+
  .divider {
      border: 0;
      height: 1px;
      background: #ddd;
      margin: 20px 0;
  }
- 
+
  .project-group {
      margin-bottom: 15px;
  }
