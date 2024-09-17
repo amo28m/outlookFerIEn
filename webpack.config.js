@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 
-const devCerts = require("office-addin-dev-certs");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const devCerts = require('office-addin-dev-certs');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const urlDev = "https://localhost:3000/";
-const urlProd = "https://amo28m.github.io/outlookFerIEn/";
+const urlDev = 'https://localhost:3000/';
+const urlProd = 'https://amo28m.github.io/outlookFerIEn/';
 
 function getHttpsOptionsSync() {
   const httpsOptions = devCerts.getHttpsServerOptionsSync();
@@ -13,23 +13,23 @@ function getHttpsOptionsSync() {
 }
 
 module.exports = (env, options) => {
-  const dev = options.mode === "development";
+  const dev = options.mode === 'development';
   const httpsOptions = env.WEBPACK_BUILD || options.https !== undefined ? options.https : getHttpsOptionsSync();
 
   const config = {
-    devtool: "source-map",
+    devtool: 'source-map',
     entry: {
-      polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      taskpane: "./src/taskpane/taskpane.js", // Haupt-JavaScript-Datei für die Taskpane
-      commands: "./src/commands/commands.js", // Haupt-JavaScript-Datei für Commands
+      polyfill: ['core-js/stable', 'regenerator-runtime/runtime'],
+      taskpane: './src/taskpane/taskpane.js', // Haupt-JavaScript-Datei für die Taskpane
+      commands: './src/commands/commands.js', // Haupt-JavaScript-Datei für Commands
     },
     output: {
-      filename: "[name].bundle.js", // Namenskonvention für die generierten Bundle-Dateien
-      path: __dirname + "/dist", // Ausgabeordner für die gebauten Dateien
+      filename: '[name].bundle.js', // Namenskonvention für die generierten Bundle-Dateien
+      path: __dirname + '/dist', // Ausgabeordner für die gebauten Dateien
       clean: true, // Löscht die Ausgabe-Ordner vor dem neuen Build
     },
     resolve: {
-      extensions: [".html", ".js"], // Ermöglicht es, diese Erweiterungen ohne Angabe zu importieren
+      extensions: ['.html', '.js'], // Ermöglicht es, diese Erweiterungen ohne Angabe zu importieren
     },
     module: {
       rules: [
@@ -37,63 +37,63 @@ module.exports = (env, options) => {
           test: /\.js$/,
           exclude: /node_modules/,
           use: {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-              presets: ["@babel/preset-env"],
+              presets: ['@babel/preset-env'],
             },
           },
         },
         {
           test: /\.html$/,
           exclude: /node_modules/,
-          use: "html-loader",
+          use: 'html-loader',
         },
         {
           test: /\.(png|jpg|jpeg|gif|ico)$/,
-          type: "asset/resource",
+          type: 'asset/resource',
           generator: {
-            filename: "assets/[name][ext][query]",
+            filename: 'assets/[name][ext][query]',
           },
         },
       ],
     },
     plugins: [
       new HtmlWebpackPlugin({
-        filename: "taskpane.html",
-        template: "./src/taskpane/taskpane.html",
-        chunks: ["polyfill", "taskpane"],
+        filename: 'taskpane.html',
+        template: './src/taskpane/taskpane.html',
+        chunks: ['polyfill', 'taskpane'],
       }),
       new CopyWebpackPlugin({
         patterns: [
           {
-            from: "assets/*",
-            to: "assets/[name][ext][query]",
+            from: 'assets/*',
+            to: 'assets/[name][ext][query]',
           },
           {
-            from: "manifest*.json",
-            to: "[name][ext]",
+            from: 'manifest*.json',
+            to: '[name][ext]',
             transform(content) {
               if (dev) {
                 return content;
               } else {
-                return content.toString().replace(new RegExp(urlDev, "g"), urlProd);
+                return content.toString().replace(new RegExp(urlDev, 'g'), urlProd);
               }
             },
           },
         ],
       }),
       new HtmlWebpackPlugin({
-        filename: "commands.html",
-        template: "./src/commands/commands.html",
-        chunks: ["polyfill", "commands"],
+        filename: 'commands.html',
+        template: './src/commands/commands.html',
+        chunks: ['polyfill', 'commands'],
       }),
     ],
     devServer: {
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        'Access-Control-Allow-Origin': '*',
       },
       server: {
-        type: "https",
+        type: 'https',
         options: httpsOptions,
       },
       port: process.env.npm_package_config_dev_server_port || 3000,
